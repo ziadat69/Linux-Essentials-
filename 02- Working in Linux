@@ -1,0 +1,72 @@
+
+—> Ls : Zeigt den Inhalt des aktuellen Verzeichnisses an.
+
+—> Ls -l:  Zeigt den Inhalt des Verzeichnisses mit zusätzlichen Details wie Berechtigungen, Eigentümer, Größe und Änderungsdatum.
+
+ —> ls -R : Zeigt den Inhalt des Verzeichnisses alle Datei
+
+—> ls -h: Zeigt die Dateigröße in menschenlesbaren Einheiten (z. B. KB, MB) an.
+
+
+
+
+
+—> history: Zeigt eine Liste der letzten Befehle an.
+
+—> cal ist ein Befehl, der einen Kalender im Terminal anzeigt.
+  
+
+
+—> variable=value: Variable setzen.
+
+—> echo $variable: Variable anzeigen.
+
+—> echo: Text ausgeben.
+
+
+
+Umgebungsvariablen:
+
+—> env | grep variable1:
+
+           Zeigt Umgebungsvariablen, die den Namen der Variablen enthalten.
+
+—> export variable: 
+
+          Exportiert eine Variable, sodass sie in allen Unterprozessen verfügbar ist.
+
+—> unset variable2: 
+
+          Löscht eine Variable aus der Umgebung.
+ 
+
+—> type:              Zeigt den Typ eines Befehls (ob es ein eingebauter Befehl, ein Skript oder ein Programm ist).
+
+ —> which command: 
+                      Zeigt den Speicherort eines Befehls im System an.
+
+ Alias und Funktionen:
+—> alias name=command: Alias erstellen.
+—> function() { commands }: Funktion definieren.
+
+  Single quotes prevent the shell from doing any interpreting of special characters, including globs, variables,
+command substitution and other metacharacters that have not been discussed yet.  
+
+—>  echo 'The car costs $100'                        
+The car costs $100
+
+
+  Backticks (Gravis-Zeichen): Sie werden verwendet, um einen Befehl innerhalb eines anderen auszuführen
+, was als „Befehlsersetzung“ bezeichnet wird. Dies ermöglicht eine mächtige und flexible Nutzung von Befehlen.
+
+ —> echo Today is `date`                         
+Today is Mon Nov 4 03:40:04 UTC 2018
+
+
+
+ —> command1; command2; command3    Führt die Befehle nacheinander aus.
+  —> command1 && command2. Führt den zweiten Befehl nur aus, wenn der erste erfolgreich war.
+
+  —> command1 || command2. Führt den zweiten Befehl nur aus, wenn der erste fehlschlägt.
+ ls /etc/ppp || echo failed                 
+File1 File2
