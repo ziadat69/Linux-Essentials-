@@ -1,0 +1,98 @@
+Hier ist die Erklärung der Befehle auf Deutsch:  
+
+1.--> cd / 
+   → Wechselt in das Root-Verzeichnis (`/`).  
+
+2.--> whoami 
+   → Zeigt den aktuell angemeldeten Benutzer an.  
+
+3.--> uname  
+   → Zeigt den Namen des Betriebssystems an.  
+
+4.--> uname -n
+   → Zeigt den Hostnamen des Computers an.  
+
+5.--> pwd 
+   → Gibt das aktuelle Arbeitsverzeichnis aus.  
+
+6.--> history 
+   → Zeigt eine Liste der zuletzt eingegebenen Befehle an.  
+
+7.--> history 5  
+   → Zeigt die letzten 5 eingegebenen Befehle an.  
+
+8.--> echo Hello Student 
+   → Gibt den Text „Hello Student“ in der Konsole aus.  
+
+9.--> echo Today is $(date)  
+   → Zeigt den aktuellen Tag mit Datum an. Das `$(date)` führt den `date`-Befehl aus und gibt das aktuelle Datum aus.  
+
+10.--> echo D*  
+   → Listet alle Dateien und Verzeichnisse auf, die mit „D“ beginnen (z. B. „Desktop“, „Documents“, „Downloads“).
+---
+
+### ls -Befehle 
+1.-->   ls -d
+   → Zeigt nur Verzeichnisse an, ohne ihren Inhalt aufzulisten.  
+ 
+2.-->   ls -d /etc/????
+
+   → Listet alle Verzeichnisse oder Dateien im `/etc/`-Verzeichnis auf, die genau **vier Zeichen lang** sind.  
+
+3.-->   ls -d /etc/[abcd]*
+
+   → Zeigt alle Dateien und Verzeichnisse im `/etc/`-Verzeichnis an, die mit `a`, `b`, `c` oder `d` beginnen.  
+
+---
+
+### **`echo`-Befehle (Pattern Matching)**  
+
+4.--> echo *  
+
+   → Gibt alle Dateien und Verzeichnisse im aktuellen Verzeichnis aus.  
+
+5..--> echo *s 
+
+   → Gibt alle Dateien und Verzeichnisse aus, die mit einem beliebigen Namen enden und ein `s` als letztes Zeichen haben.  
+
+6.--> echo [DP]* 
+
+   → Zeigt alle Dateien und Verzeichnisse an, die mit `D` oder `P` beginnen.  
+
+7.--> echo [!DP]*
+
+   → Zeigt alle Dateien und Verzeichnisse an, die **nicht** mit `D` oder `P` beginnen.  
+
+8.--> echo D???????? 
+
+   → Zeigt alle Dateien und Verzeichnisse an, die mit `D` beginnen und **genau 8 weitere Zeichen** haben (insgesamt 9 Zeichen).  
+
+9.--> echo [D-P]* 
+
+   → Listet alle Dateien und Verzeichnisse auf, deren Name mit einem Buchstaben zwischen `D` und `P` beginnt.  
+
+10.--> echo [!D-P]*
+
+   → Zeigt alle Dateien und Verzeichnisse an, die **nicht** mit einem Buchstaben zwischen `D` und `P` beginnen.  
+
+---
+
+### **Dateimanipulation**  
+11.--> mkdir  
+   → Erstellt ein neues Verzeichnis (es fehlt hier ein Verzeichnisname, z. B. `mkdir MyFolder`).  
+
+12.--> rm -r Myetc
+   → Löscht das Verzeichnis `Myetc` **rekursiv**, also inklusive aller enthaltenen Dateien und Unterverzeichnisse.  
+
+13.--> touch premove 
+   → Erstellt eine leere Datei namens `premove`.  
+
+14.--> mv premove
+   → Hier fehlt das Zielverzeichnis oder der neue Name. Der vollständige Befehl sollte lauten:  
+
+   mv premove newname
+
+   → Verschiebt oder benennt die Datei um.  
+
+15.--> rm postmove 
+   → Löscht die Datei `postmove`.
