@@ -1,0 +1,52 @@
+
+
+### **Hilfe zu Befehlen abrufen**  
+
+1.--> man date
+
+   → Öffnet die **Manpage** für den Befehl `date`, die eine ausführliche Beschreibung und alle Optionen enthält.  
+
+2.--> man -k password 
+
+   → Sucht nach allen Manpages, die das Wort **„password“** in ihrer Beschreibung enthalten.  
+
+3.--> apropos password
+
+   → Zeigt ebenfalls eine Liste von Befehlen, die mit **„password“** zu tun haben.  
+   → `man -k` und `apropos` liefern **die gleiche Ausgabe**.  
+
+4.--> man -f passwd
+
+   → Zeigt eine **kurze Beschreibung** des `passwd`-Befehls.  
+   → Entspricht dem Befehl `whatis passwd`.  
+
+5.--> whatis passwd  
+
+   → Gibt eine **kurze** Beschreibung des Befehls `passwd` aus.  
+
+6.--> info date
+
+   → Öffnet die **Info-Seite** für den `date`-Befehl (ähnlich wie `man`, aber oft detaillierter).  
+
+7.--> date --help 
+
+   → Zeigt eine **kurze Übersicht** über die verfügbaren Optionen für `date`.  
+
+8.--> ls /usr/share/doc 
+   → Listet alle Dokumentationen und Anleitungen für verschiedene Programme auf, die sich im Verzeichnis `/usr/share/doc` befinden.  
+   → Viele Programme haben hier **zusätzliche Hilfedateien**.  
+
+---
+
+### **Dateien suchen**  
+
+9.--> locate crontab
+
+   → Sucht *schnell* nach Dateien, die „crontab“ im Namen enthalten.  
+
+10.-->  locate -b "\crontab"  
+   → Sucht nach Dateien mit dem **genauen Namen** „crontab“.  
+   → Das `-b` sorgt dafür, dass nur der Basisname (nicht der gesamte Pfad) überprüft wird.  
+
+11.--> whereis passwd 
+   → Zeigt den **Speicherort** des `passwd`-Befehls und seiner zugehörigen Dateien (z. B. Manpages, Quellcode).
