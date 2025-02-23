@@ -1,0 +1,43 @@
+
+1. >> lscpu  
+
+   Zeigt Informationen über die CPU (Prozessor) des Systems an,
+   wie z.B. Architektur, Anzahl der Kerne und Threads.
+
+2. >> head -n 20 /proc/cpuinfo 
+
+   Zeigt die ersten 20 Zeilen der Datei `/proc/cpuinfo` an, 
+   die Details über die CPU(nen) des Systems enthält.
+
+3. >> free -m   
+
+   Zeigt die Speicherauslastung des Systems in Megabyte (MB) an,
+   einschließlich des verfügbaren und verwendeten RAMs.
+
+4. >> free -g  
+   Zeigt die Speicherauslastung des Systems in Gigabyte (GB) an.
+
+
+5. >> lspci  
+   Listet alle PCI-Geräte (z.B. Grafikkarten, Netzwerkkarten) auf dem System auf.
+
+6. >> lspci -k  
+
+   Listet alle PCI-Geräte und zeigt zusätzlich an, welche Kernel-Module (Treiber) 
+   für diese Geräte verwendet werden.
+
+7. >> lsusb
+
+   Listet alle USB-Geräte auf, die mit dem Computer verbunden sind 
+   (z.B. Tastaturen, Drucker, USB-Sticks).
+
+8. >> lsmod
+
+   Zeigt eine Liste der aktuell geladenen Kernel-Module an, 
+   die das System nutzt, einschließlich Treibern für Hardware.
+
+9. >> disk -l  
+
+   Listet alle Partitionen auf den Festplatten des Systems auf, 
+   einschließlich deren Größe und Typ. 
+
