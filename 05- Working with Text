@@ -1,0 +1,66 @@
+
+1. > find ~ -name "bash"
+   Dieser Befehl sucht im Heimatverzeichnis (`~`) nach Dateien oder Verzeichnissen, deren Namen den String "bash" enthalten.
+
+2. >  find /etc -name hosts 
+   Dieser Befehl sucht im Verzeichnis `/etc` nach einer Datei oder einem Verzeichnis mit dem Namen `hosts`.
+
+3. >  tr a-z A-Z 
+   Dieser Befehl wird verwendet, um Kleinbuchstaben (`a-z`) in Großbuchstaben (`A-Z`) umzuwandeln.
+  Er gibt allein keine Ausgabe zurück, sondern wird in der Regel in einer Pipeline verwendet,
+   z. B.: `echo "hello" | tr a-z A-Z`, was `HELLO` ergibt.
+
+4. >  cut -d: -f1 /etc/passwd
+
+   Dieser Befehl extrahiert das erste Feld (vor dem Doppelpunkt `:`) aus jeder Zeile der Datei `/etc/passwd`.
+    Die Datei `/etc/passwd` enthält Benutzerkontoinformationen, und die Option `-f1` extrahiert die Benutzernamen.
+
+5. > cut -d: -f1 /etc/passwd | sort  
+   Dieser Befehl extrahiert die Benutzernamen aus der Datei `/etc/passwd` und sortiert sie alphabetisch.
+
+6. > more or less  
+   `more` und `less` sind beide Befehle, mit denen man den Inhalt von Dateien seitenweise im Terminal anzeigen kann. `less` ist weiterentwickelt, da es sowohl vorwärts als auch rückwärts scrollen lässt, während `more` nur Vorwärts-Scrolling ermöglicht.
+
+7. > head
+   Dieser Befehl zeigt standardmäßig die ersten 10 Zeilen einer Datei an. Beispiel: `head /etc/passwd` zeigt die ersten 10 Zeilen der Datei `/etc/passwd` an.
+
+8. > tail 
+   Dieser Befehl zeigt standardmäßig die letzten 10 Zeilen einer Datei an. Beispiel: `tail /etc/passwd` zeigt die letzten 10 Zeilen der Datei `/etc/passwd` an.
+
+9. > head -2 /etc/passwd  
+   Dieser Befehl zeigt die ersten 2 Zeilen der Datei `/etc/passwd` an.
+
+10. > cd /etc 
+   Dieser Befehl wechselt in das Verzeichnis `/etc`, das Konfigurationsdateien in Linux-Systemen enthält.
+
+11. > grep sshd passwd 
+   Dieser Befehl sucht nach dem String `sshd` in der Datei `/etc/passwd`. `sshd` ist der Daemon für SSH (Secure Shell), der für den sicheren Fernzugriff auf das System verantwortlich ist.
+
+12. > grep '^root' passwd 
+   Dieser Befehl sucht nach Zeilen in der Datei `/etc/passwd`, die mit dem String `root` beginnen. Er zeigt den Eintrag für den Benutzer `root`.
+
+13.  > grep 'sync' passwd 
+   Dieser Befehl sucht nach Zeilen in der Datei `/etc/passwd`, die den String `sync` enthalten.
+
+14. > grep 'sync$' passwd  
+   Dieser Befehl sucht nach Zeilen in der Datei `/etc/passwd`, die mit dem String `sync` enden (`$` bezeichnet das Ende einer Zeile).
+
+15. > grep '.y' passwd  
+   Dieser Befehl sucht nach Zeilen in der Datei `/etc/passwd`, die ein beliebiges Zeichen gefolgt von `y` enthalten. Der Punkt (`.`) steht für jedes einzelne Zeichen.
+
+16. > grep 'sshd|root|operator' passwd  
+   Dieser Befehl sucht nach Zeilen in der Datei `/etc/passwd`, die `sshd`, `root` oder `operator` enthalten. Allerdings wird das `|` (Pipe) als normales Zeichen behandelt, sodass dies nicht wie erwartet funktioniert.
+
+17. > grep -E 'sshd|root|operator' passwd
+   Dieser Befehl funktioniert korrekt, da der Schalter `-E` erweiterte reguläre Ausdrücke aktiviert, die es ermöglichen, das `|` als "ODER"-Operator zu verwenden. Er sucht nach Zeilen, die `sshd`, `root` oder `operator` enthalten.
+
+18. > egrep 'no(b|n)' passwd  
+   Dieser Befehl sucht nach Zeilen in der Datei `/etc/passwd`, die den String `no` gefolgt von entweder `b` oder `n` enthalten. `egrep` ist eine leistungsfähigere Version von `grep`, die erweiterte reguläre Ausdrücke unterstützt, ohne dass der Schalter `-E` erforderlich ist.
+
+19. > head passwd | grep '[0-9]' 
+   Dieser Befehl zeigt die ersten 10 Zeilen der Datei `/etc/passwd` an und filtert nur diejenigen heraus, die eine Zahl (`[0-9]`) enthalten.
+
+20. > grep -E '[0-9]{3}' passwd  
+   Dieser Befehl sucht nach Zeilen in der Datei `/etc/passwd`, 
+  die eine Folge von genau drei aufeinanderfolgenden Ziffern enthalten. Der Schalter `-E` ermöglicht die Verwendung erweiterter regulärer Ausdrücke
+  , wie `{3}`, um genau drei Vorkommen einer Ziffer zu suchen.
