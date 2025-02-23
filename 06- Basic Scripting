@@ -1,0 +1,94 @@
+-- Die Datei beginnt mit `#!/bin/csh`, was darauf hinweist, 
+dass das Skript mit der `csh`-Shell ausgeführt werden soll. 
+Allerdings zeigen die nachfolgenden Beispiele, dass diese Skripte mit der `bash`-Shell (Bourne Again Shell) geschrieben sind.
+
+______________________________________________________________
+
+>>>>> 1. Beispiel für die Anzeige des Kalenders**:
+
+
+#!/bin/bash
+echo "Hallo! Hier ist der Kalender für diesen Monat:"
+cal
+
+ #!/bin/bash : Gibt an, dass das Skript mit der Bash-Shell ausgeführt werden soll.
+- echo: Gibt die Nachricht "Hallo! Hier ist der Kalender für diesen Monat:" aus.
+- cal: Zeigt den Kalender für den aktuellen Monat an.
+______________________________________________________________
+
+>>>>> 2. Altersabfrage mit einer Bedingung:
+
+echo "Bitte gib dein Alter ein"  # Aufforderung
+read age  # Liest die Benutzereingabe und speichert sie in der Variable $age
+
+if test $age -lt 16  # Überprüft, ob das Alter weniger als 16 ist
+then
+    echo "Du bist noch nicht alt genug, um zu fahren."  # Wenn die Bedingung wahr ist
+else
+    echo "Du kannst fahren!"  # Wenn die Bedingung falsch ist
+fi
+
+- test $age -lt 16: Testet, ob das Alter weniger als 16 Jahre ist.
+- if: Wenn die Bedingung wahr ist, wird der Text "Du bist noch nicht alt genug,
+      um zu fahren." ausgegeben. Wenn nicht, wird "Du kannst fahren!" ausgegeben.
+
+______________________________________________________________
+
+>>>>> 3. **Überprüfung, ob ein Benutzer im System existiert**:
+```bash
+#!/bin/bash
+echo "Gib einen Benutzernamen ein, den du überprüfen möchtest:"
+read name  # Liest die Benutzereingabe und speichert sie in der Variable $name
+
+if grep $name /etc/passwd > /dev/null  # Überprüft, ob der Benutzer in der Datei /etc/passwd existiert
+then
+    echo "$name ist im System"
+else
+    echo "$name existiert nicht"
+fi
+```
+- grep $name /etc/passwd: Sucht nach dem Benutzernamen in der Datei `/etc/passwd`, die alle Benutzer des Systems enthält.
+______________________________________________________________
+
+>>>>> 4. Wiederholung bis eine Zahl größer als 100 eingegeben wird:
+
+```bash
+#!/bin/bash
+echo "Bitte gib eine Zahl größer als 100 ein"
+read num
+while [ $num -le 100 ]  # Wiederholt, solange die Zahl kleiner oder gleich 100 ist
+do
+    echo "$num ist NICHT größer als 100."
+    echo "Bitte gib eine Zahl größer als 100 ein"
+    read num
+done
+echo "Endlich, $num ist größer als 100"
+```
+
+- **`while`**: Solange die Zahl kleiner oder gleich 100 ist, fordert das Skript den Benutzer auf, eine neue Zahl einzugeben.
+- **`done`**: Beendet die Schleife, wenn die Zahl größer als 100 ist.
+______________________________________________________________
+
+>>>>> 5. **Durchlauf durch Dateien und Zählen der Zeilen**:
+
+for name in /etc/passwd /etc/hosts /etc/group
+do
+    wc $name  # Gibt die Zeilenanzahl und andere Informationen für jede Datei aus
+done
+
+- for: Iteriert über die angegebenen Dateien und führt den `wc`-Befehl (Word Count) aus, 
+       der die Zeilenanzahl und andere Statistiken über jede Datei gibt.
+______________________________________________________________
+
+>>>>> 6. Erstellung von Dateien**:
+```bash
+for num in `seq 1 12`
+do
+    touch test$num  # Erstellt Dateien mit den Namen test1, test2, ..., test12
+done
+ls  # Listet alle Dateien im Verzeichnis auf
+```
+- **`seq 1 12`**: Erzeugt eine Sequenz von Zahlen von 1 bis 12.
+- **`touch`**: Erstellt Dateien mit den Namen `test1`, `test2` usw.
+
+
