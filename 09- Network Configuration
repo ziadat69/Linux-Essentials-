@@ -1,0 +1,66 @@
+Hier sind die Befehle und ihre Erklärungen auf Deutsch:
+
+1. >>>>> ifconfig 
+
+   - Zeigt die Netzwerkkonfiguration und die Netzwerkschnittstellen des Systems an (z. B. IP-Adressen, 
+     Netzmaske, MAC-Adresse usw.). In modernen Linux-Distributionen wurde `ifconfig` durch `ip` ersetzt, aber `ifconfig` ist immer noch weit verbreitet.
+
+2. >>>>> route 
+
+   - Zeigt die Routing-Tabelle des Systems an, die angibt, wie Datenpakete an verschiedene Netzwerke gesendet werden.
+     Mit `route` kannst du auch Routen hinzufügen oder löschen.
+
+3.>>>>> grep 127.0.0.1 /etc/hosts 
+
+   - Sucht nach der IP-Adresse `127.0.0.1` in der Datei `/etc/hosts`. Diese Adresse entspricht dem lokalen Host (localhost) und
+     wird oft für Netzwerkkommunikation innerhalb des eigenen Systems verwendet.
+
+4. >>>>> ping -c4 localhost
+
+   - Sendet vier ICMP-Echo-Anfragen an `localhost`, um zu überprüfen, ob die Netzwerkverbindung zum eigenen Rechner funktioniert (127.0.0.1).
+
+5. >>>>> cat /etc/resolv.conf
+
+   - Zeigt die Datei `/etc/resolv.conf` an, die die DNS-Server (Domain Name System) enthält, die vom System verwendet werden, um Domain-Namen in IP-Adressen aufzulösen.
+
+6. >>>>> dig localhost.localdomain
+
+   - Führt eine DNS-Abfrage für den Domain-Namen `localhost.localdomain` durch. `dig` ist ein Tool zur DNS-Abfrage, das detaillierte Informationen zurückgibt.
+
+7. >>>>> dig cserver.example.com
+
+   - Führt eine DNS-Abfrage für den Domain-Namen `cserver.example.com` durch, um die IP-Adresse des Servers zu erhalten.
+
+8. >>>>> dig -x 192.168.1.2 
+
+   - Führt eine umgekehrte DNS-Abfrage (Reverse DNS Lookup) durch, um den Hostnamen zu einer gegebenen IP-Adresse (`192.168.1.2`) zu finden.
+
+9. >>>>> netstat --help
+
+   - Zeigt eine Hilfeseite für den Befehl `netstat`, der Netzwerkverbindungen, Routing-Tabellen, Schnittstellenstatistiken und andere Netzwerkdaten anzeigen kann.
+
+10. >>>>> netstat -tl
+
+    - Zeigt alle **TCP**-Verbindungen an, die auf den eingehenden Verbindungen warten (Listening Ports). Diese Option zeigt nur Verbindungen an, die auf eingehende Anfragen hören.
+
+11. >>>>> netstat -tln
+
+    - Zeigt alle **TCP**-Verbindungen an, die auf eingehende Verbindungen warten, aber zusätzlich mit detaillierteren Informationen, wie z. B. den genauen Ports.
+
+12. >>>>> netstat -ltn
+
+    - Zeigt alle **TCP**-Verbindungen an, die auf eingehende Verbindungen warten, und listet sie nach Listenports sortiert auf.
+
+13. >>>>> netstat
+
+    - Zeigt alle offenen Netzwerkverbindungen an (einschließlich der Verbindungen, die derzeit verwendet werden).
+      Ohne Parameter zeigt es sowohl eingehende als auch ausgehende Verbindungen.
+
+14. >>>>> start_webserver 
+    - Dies könnte ein benutzerdefinierter Befehl sein, um einen Webserver zu starten. Es hängt davon ab,
+      wie der Befehl auf deinem System konfiguriert ist. Zum Beispiel könnte dies ein Skript oder ein Alias sein, um einen Apache- oder Nginx-Server zu starten.
+
+15. >>>>> ss
+    - **`ss`** ist ein modernes Tool, das dazu verwendet wird, Netzwerkverbindungen, Sockets und Ports anzuzeigen. 
+      Es ist eine schnellere und genauere Alternative zu `netstat`. Mit `ss` kannst du alle Verbindungen, Listen-Ports und andere Netzwerkdaten anzeigen.
+
