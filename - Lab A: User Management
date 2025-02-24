@@ -1,0 +1,73 @@
+######### 1) Erstelle ein Verzeichnis im Root-Verzeichnis (/) des Dateisystems 
+für jede Abteilung. Der Name dieses Verzeichnisses sollte den Namen der Abteilung widerspiegeln, die das Verzeichnis verwenden wird:
+
+
+> sudo mkdir /Engineering
+> sudo mkdir /Sales
+> sudo mkdir /IS
+
+
+########## 2) Erstellen einer Gruppe für jede Abteilung:
+
+> sudo groupadd Engineering
+> sudo groupadd Sales
+> sudo groupadd IS
+
+
+ ########## 3) Erstelle einen administrativen Benutzer für jede Abteilung.
+
+- Der Benutzer wird eine Bash-Login-Shell haben.
+- Der Benutzer wird der jeweiligen Gruppe der Abteilung angehören. Dies wird die primäre Gruppe des Benutzers sein.
+
+
+> sudo useradd -m -G Engineering -s /bin/bash adminEngineering
+> sudo useradd -m -G Sales -s /bin/bash adminSales
+> sudo useradd -m -G IS -s /bin/bash adminIS
+
+ ##########  4) Erstelle zwei weitere Benutzer für jede Abteilung.
+
+- Die Benutzer werden eine Bash-Login-Shell haben.
+- Die Benutzer werden der jeweiligen Gruppe der Abteilung angehören. Dies wird die primäre Gruppe des Benutzers sein.
+
+> sudo useradd -m -s /bin/bash -g Engineering user1Engineering
+> sudo useradd -m -s /bin/bash -g Engineering user2Engineering
+
+> sudo useradd -m -s /bin/bash -g Sales user1Sales
+> sudo useradd -m -s /bin/bash -g Sales user2Sales
+
+> sudo useradd -m -s /bin/bash -g IS user1IS
+> sudo useradd -m -s /bin/bash -g IS user2IS
+
+ ##########  
+
+# -- Besitzer und Gruppe auf den Abteilungsadministrator und die Abteilungsgruppe setzen
+
+>  sudo chown -R engineer_admin:Engineering /Engineering
+
+# Berechtigungen für das Verzeichnis setzen (Administrator und Gruppe haben vollen Zugriff, andere nicht)
+
+>  sudo chmod 770 /Engineering
+
+# Sticky-Bit setzen, damit nur der Besitzer einer Datei diese löschen kann
+
+>  sudo chmod +t /Engineering
+
+
+ ########## 
+
+
+# Erstelle das Dokument in der Sales-Abteilung
+
+> echo "This file contains confidential information for the department." | sudo tee /Sales/confidential.txt
+
+# Setze den Besitzer und die Gruppe der Datei
+
+>sudo chown adminSales:Sales /Sales/confidential.txt
+
+# Nun stellen wir sicher, dass:
+
+    - Alle Benutzer in der Abteilung (Gruppe Engineering) die Datei lesen können.
+    - Nur der Administrator (Besitzer) die Datei bearbeiten kann.
+    - Keine anderen Benutzer Zugriff auf die Datei haben.
+
+> sudo chmod 640 /Sales/confidential.txt
