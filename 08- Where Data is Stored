@@ -1,0 +1,60 @@
+Hier ist eine kurze Erklärung der Befehle und ihrer Bedeutung in Deutsch:
+
+1. **Data is stored**  
+   - In Linux/Unix-Systemen wird Daten in verschiedenen Verzeichnissen gespeichert, z. B. in `/home`, `/var`, `/etc`, `/tmp` und `/usr`.
+
+2. >>>>>> ps
+
+   - Zeigt die laufenden Prozesse an.
+
+3. >>>>>> top 
+   - Zeigt eine dynamische Ansicht der laufenden Prozesse in Echtzeit an.
+
+4. >>>>>> ps -p 1  
+   - Zeigt Informationen über den Prozess mit der PID 1 an (normalerweise init oder systemd).
+
+5. >>>>>> jobs  
+   - Zeigt alle Hintergrundjobs im aktuellen Terminal an.
+
+6. >>>>>> fg %1  
+   - Bringt den ersten Hintergrundjob (Job Nummer 1) in den Vordergrund.
+
+7. >>>>>> bg %1  
+   - Setzt den ersten Hintergrundjob fort, wenn er gestoppt wurde.
+
+8. >>>>>> kill %3  
+   - Beendet den Job mit der Job-ID 3.
+
+9. >>>>>> killall ping  
+   - Beendet alle Prozesse mit dem Namen `ping`.
+
+10. >>>>>> man kill
+   - Zeigt die Handbuchseite für den Befehl `kill`.
+
+11. >>>>>> pkill  
+   - Beendet Prozesse basierend auf Kriterien wie Namen oder anderen Eigenschaften.
+
+12. >>>>>> sleep 888888 &
+   - Startet den `sleep`-Befehl (der für eine sehr lange Zeit pausiert) im Hintergrund.
+
+13. >>>>>> jobs  
+   - Zeigt erneut alle Hintergrundjobs im aktuellen Terminal an.
+
+14. >>>>>> ps  
+   - Zeigt die aktuellen Prozesse an.
+
+15.>>>>>> **pkill -15 sleep  
+   - Sendet ein SIGTERM (Signal 15) an alle `sleep`-Prozesse, um sie zu beenden.
+
+16. .>>>>>> ps -e  
+   - Zeigt alle laufenden Prozesse an.
+
+17. >>>>>> ps -o pid,tty,time,%cpu,cmd**  
+   - Zeigt die Prozess-ID, Terminal, Laufzeit, CPU-Auslastung und den Befehl für jeden Prozess an.
+
+18. >>>>>> ps -o pid,tty,time,%mem,cmd --sort %mem  
+   - Zeigt die Prozess-ID, Terminal, Laufzeit, Speicherverbrauch und den Befehl an und sortiert nach Speicherverbrauch.
+
+19. >>>>>> ls /var/log
+   - Listet die Logdateien im Verzeichnis `/var/log` auf, die häufig System- und Anwendungsprotokolle enthalten.
+
