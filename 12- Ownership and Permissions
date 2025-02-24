@@ -4,22 +4,26 @@
    Der Befehl **`chmod`** wird verwendet, um die Berechtigungen einer Datei oder eines Verzeichnisses zu ändern.
 
    - ** >>> chmod a+x file
+
      Dieser Befehl gibt allen Benutzern (Eigentümer, Gruppe und andere) Ausführungsberechtigungen für die Datei **`file`**.
      - **a** steht für alle (Eigentümer, Gruppe, andere).
      - **+x** fügt das Ausführungsrecht hinzu.
 
    - ** >>> chmod g-w file
+
      Entfernt das Schreibrecht für die Gruppe für die Datei **`file`**.
      - **g** steht für die Gruppe.
      - **-w** entfernt das Schreibrecht.
 
-   - ** >>> chmod go+r file   
+   - ** >>> chmod go+r file  
+
      Fügt das Leserecht für die Gruppe und andere Benutzer hinzu.
      - **g** steht für Gruppe.
      - **o** steht für andere.
      - **+r** fügt das Leserecht hinzu.
 
    - ** >>> chmod o=rwx file  
+
      Setzt die Berechtigungen für andere Benutzer auf Lese-, Schreib- und Ausführungsberechtigung.
      - **o** steht für andere.
      - **=rwx** setzt die Berechtigungen auf alle drei: Lesen, Schreiben und Ausführen.
