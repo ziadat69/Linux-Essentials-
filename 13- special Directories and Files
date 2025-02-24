@@ -1,0 +1,115 @@
+
+
+In Linux gibt es verschiedene spezielle Verzeichnisse und Dateien, 
+die unterschiedliche Berechtigungen und Verhaltensweisen aufweisen.
+In diesem Abschnitt geht es um das Verständnis und den Umgang mit bestimmten Verzeichnissen, 
+besonderen Berechtigungen und Dateitypen wie **setuid**, **setgid**, **sticky bit**, **Inodes**, **Hard Links** und
+**Symbolic Links**.
+
+#### 1. **Sticky Bit**
+
+- **/tmp** und **/var/tmp** sind Verzeichnisse, die standardmäßig für alle Benutzer **lesbar**, 
+**schreibbar** und **ausführbar** sind. Dies bedeutet, dass jeder Benutzer in diesen Verzeichnissen Dateien erstellen kann.
+- Das Problem dabei ist, dass Benutzer, die Schreibberechtigungen für ein Verzeichnis haben, auch die Berechtigung haben,
+Dateien zu löschen.
+- Das **Sticky Bit** wird gesetzt,
+um dieses Problem zu lösen. Wenn das Sticky Bit auf einem Verzeichnis gesetzt ist,
+können nur die Benutzer, die eine Datei erstellt haben, diese auch löschen. Der **root**-Benutzer kann alle Dateien löschen, 
+unabhängig von den Berechtigungen.
+
+   Beispiel:
+   ```
+   ls -ld /tmp
+   ```
+
+#### 2. **Berechtigungen für /etc/shadow**
+- Die **/etc/shadow**-Datei enthält sensible Informationen, 
+wie die verschlüsselten Passwörter der Benutzer und das Alter der Passwörter.
+- Die Berechtigungen auf dieser Datei sind daher sehr restriktiv:
+  - Der **root**-Benutzer hat **Lese- und Schreibberechtigungen**.
+  - Mitglieder der Gruppe **shadow** haben **Leseberechtigung**.
+  - Andere Benutzer haben **keine Berechtigungen**.
+
+   Beispiel:
+   ```
+   ls -l /etc/shadow
+   ```
+
+#### 3. **setuid und setgid**
+- **setuid (Set User ID)**: Diese spezielle Berechtigung sorgt dafür, dass 
+ein Programm mit den Berechtigungen des Besitzers des Programms ausgeführt wird, 
+nicht mit den Berechtigungen des aufrufenden Benutzers. Das wird häufig bei Programmen wie **passwd** verwendet, 
+um Benutzern die Möglichkeit zu geben, ihre Passwörter zu ändern, ohne Root-Rechte zu benötigen.
+
+   Beispiel:
+   ```bash
+   ls -l /usr/bin/passwd
+   ```
+   Der **setuid**-Berechtigungsbit ist als **`s`** im Berechtigungsbereich für den Benutzer zu sehen.
+
+- **setgid (Set Group ID)**: Ähnlich wie **setuid**, aber hier wird das Programm mit 
+den Berechtigungen der Gruppe des Programms ausgeführt, nicht der Gruppe des aufrufenden Benutzers. 
+Ein Beispiel hierfür ist der **wall**-Befehl, der mit der Gruppe **tty** ausgeführt wird, 
+um Nachrichten an alle Terminals zu senden.
+
+   Beispiel:
+   ```bash
+   ls -l /usr/bin/wall
+   ```
+
+#### 4. **Inode und Dateisystem**
+- Jede Datei im Linux-Dateisystem hat eine **Inode**, die Metadaten zur Datei enthält,
+wie Berechtigungen, Besitz und Dateigröße.
+- Um die Inode-Nummer einer Datei zu sehen, kannst du den **ls -i**-Befehl verwenden:
+
+   Beispiel:
+   ```bash
+   ls -li source
+   ```
+
+   Die Ausgabe zeigt die **Inode-Nummer** und die **Anzahl der Links** (Link Count). 
+Eine Datei hat einen Link Count von **1**, wenn sie noch keine weiteren Verknüpfungen hat.
+
+#### 5. **Hard Links**
+- Mit einem **Hard Link** kannst du eine Datei unter einem anderen Namen zugänglich machen.
+Ein Hard Link bezieht sich auf die gleiche Inode und erhöht den Link Count.
+- Wenn du einen Hard Link erstellst, wird die Datei über mehrere Namen zugänglich gemacht, 
+aber es handelt sich immer noch um dieselbe Datei.
+
+   Beispiel:
+   ```bash
+   ln source hardlink
+   ls -li source hardlink
+   ```
+
+   Dies zeigt, dass beide Dateien die gleiche **Inode-Nummer** haben und den Link Count erhöht haben.
+
+- Wenn du einen Hard Link entfernst, verringert sich der Link Count. 
+Die Datei bleibt jedoch weiterhin verfügbar, solange mindestens ein Hard Link existiert.
+
+   Beispiel:
+   ```bash
+   rm hardlinktwo
+   ls -li source hardlink
+   ```
+
+#### 6. **Symbolic Links (Soft Links)**
+- Ein **Symbolic Link** (oder Soft Link) ist eine Datei, die auf den Dateinamen einer anderen Datei verweist. 
+Im Gegensatz zu Hard Links hat ein Soft Link eine eigene Inode und ermöglicht es, auf Dateien in verschiedenen Dateisystemen oder Partitionen zu verlinken.
+- Ein Soft Link kann auch auf Verzeichnisse verweisen, was bei Hard Links nicht möglich ist.
+
+   Beispiel:
+   ```bash
+   ln -s source softlink
+   ls -li source softlink
+   ```
+
+   Der Soft Link hat eine eigene Inode und ist als **Link-Datei** 
+  (durch das **`l`** in den Dateiberechtigungen angezeigt) erkennbar. Soft Links haben keine eigenen Berechtigungen 
+   – die Berechtigungen der Ziel-Datei bestimmen, wie auf sie zugegriffen werden kann.
+
+   Erstelle einen symbolischen Link zu einem Verzeichnis:
+   ```bash
+   ln -s /proc crossdir
+   ls -l crossdir
+   ```
