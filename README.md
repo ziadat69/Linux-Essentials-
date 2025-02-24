@@ -1,5 +1,3 @@
-# Linux-Essentials-
-
 # Linux Essentials Course
 
 Dies ist ein Repository für das **Linux Essentials**-Kursprojekt. Es umfasst alle wichtigen Lerninhalte und praktischen Übungen, die während des Kurses vermittelt wurden. Das Ziel des Kurses war es, grundlegende Kenntnisse über das Linux-Betriebssystem zu erwerben und Fähigkeiten zu entwickeln, die für IT-Berufe wie Systemadministration, Netzwerksicherheit und Softwareentwicklung notwendig sind.
