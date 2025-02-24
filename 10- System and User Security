@@ -1,0 +1,90 @@
+Hier sind die Erklärungen für die von dir genannten Befehle und deren Ausgaben:
+
+### 1.>>> su -
+   - **`su -`** wird verwendet, um zu einem anderen Benutzer (häufig `root`) zu wechseln. Der `-` Schalter sorgt dafür, dass die Umgebungsvariablen des Zielbenutzers übernommen werden, was im Wesentlichen einen vollständigen Login-Shell-Start ausführt.
+   
+### 2. .>>> id
+   - Der Befehl **`id`** gibt Informationen über den aktuellen Benutzer aus, einschließlich der Benutzer-ID (UID), Gruppen-ID (GID) und die Gruppen, denen der Benutzer angehört.
+     Beispiel:
+     `
+     >>> id
+   
+     Ausgabe:  
+     ```
+     uid=1001(sysadmin) gid=1001(sysadmin) groups=1001(sysadmin),4(adm),27(sudo)
+     ```
+
+### 3..>>> exit 
+   - Beendet die aktuelle Shell oder Sitzung. In diesem Fall würdest du dich aus der `su`-Session abmelden und wieder zum vorherigen Benutzer zurückkehren.
+
+### 4. .>>> grep sysadmin /etc/passwd
+   - Der Befehl **`grep`** sucht nach einem bestimmten Text (hier `sysadmin`) in der Datei `/etc/passwd`, die Benutzerdaten wie Benutzername, UID, GID, Home-Verzeichnis und Standard-Shell enthält.
+
+### 5. .>>> getent passwd sysadmin
+   - **`getent`** ist ein Befehl, der Informationen aus Systemdatenbanken wie `passwd`, `group`, `hosts`, etc. abruft. Der Vorteil von **`getent`** im Vergleich zu **`grep /etc/passwd`** ist, dass es auch auf Benutzerdaten zugreifen kann, die aus Netzwerkquellen wie LDAP, NIS oder Active Directory stammen. In diesem Beispiel wird nach dem Benutzer `sysadmin` gesucht.
+   
+   Beispiel:
+  
+   >>> getent passwd sysadmin
+   
+   Ausgabe:  
+   ```
+   sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash
+   ```
+
+### 6. **`id root`**  
+   - Mit **`id root`** erhältst du Informationen über den `root`-Benutzer (die Systemadministrator-ID). Der `root`-Benutzer hat immer UID 0.
+     Beispiel:
+   
+    >> id root
+    
+     Ausgabe:  
+   
+     uid=0(root) gid=0(root) groups=0(root)
+     
+
+### 7. >>>>> who 
+
+   - Der Befehl **`who`** zeigt an, welche Benutzer derzeit auf dem System eingeloggt sind. Die Ausgabe hat normalerweise vier Spalten:
+     - **Username**: Der Name des Benutzers.
+     - **Terminal**: Das Terminal, in dem der Benutzer arbeitet.
+     - **Date**: Das Datum und die Uhrzeit des Logins.
+     - **Host**: Der Hostname oder die IP-Adresse des Systems, von dem der Benutzer eingeloggt ist (kann leer sein, wenn es ein lokales Terminal ist).
+
+     Beispiel:
+     ```bash
+     who
+     ```
+     Ausgabe:
+     ```
+     sysadmin pts/0        Feb 23 19:48
+     ```
+
+### 8.>>> w 
+   - Der **`w`**-Befehl zeigt ebenfalls Informationen über die aktuell angemeldeten Benutzer,
+     ihre Aktivitäten, die Zeit der Anmeldung, die Terminal-ID und die von ihnen genutzte CPU-Zeit an.
+
+### 9..>>> last  
+   - Der Befehl **`last`** zeigt eine Liste der letzten Logins auf dem System. Er zeigt an, wann Benutzer angemeldet und abgemeldet wurden, einschließlich der Dauer ihrer Sitzungen und von welchem Terminal sie eingeloggt sind.
+
+### Zusammenfassung der `/etc/passwd`-Datei:
+Die Datei `/etc/passwd` enthält grundlegende Informationen zu jedem Benutzer im System. Sie hat die folgende Struktur:
+
+
+name:password:UID:GID:Kommentar:Home-Verzeichnis:Shell
+
+Für den Benutzer `sysadmin` könnte die Ausgabe wie folgt aussehen:
+
+```
+sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash
+```
+
+- **name**: Der Benutzername (`sysadmin`).
+- **password**: Ein Platzhalter für das Passwort (`x` bedeutet, dass das Passwort in der Datei `/etc/shadow` gespeichert ist).
+- **UID**: Die Benutzer-ID (`1001`).
+- **GID**: Die Gruppen-ID des Benutzers (`1001`).
+- **Kommentar**: Eine Beschreibung des Benutzers (`System Administrator,,,`).
+- **Home-Verzeichnis**: Das Home-Verzeichnis des Benutzers (`/home/sysadmin`).
+- **Shell**: Die Standard-Shell des Benutzers (`/bin/bash`).
+
+Die Ausgabe von **`id`** gibt ähnliche Informationen wie **`getent passwd`**, allerdings ohne auf Netzwerkquellen zuzugreifen.
