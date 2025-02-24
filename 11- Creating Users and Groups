@@ -1,0 +1,71 @@
+
+### 1. >>>> groupadd -r research
+   - Der Befehl **`groupadd`** wird verwendet, um eine neue Gruppe zu erstellen. Der **`-r`** Schalter bedeutet, dass die Gruppe als Systemgruppe erstellt wird. In diesem Beispiel wird eine Gruppe mit dem Namen **`research`** erstellt.
+
+### 2. >>>> groupmod -n
+   - Der Befehl **`groupmod`** wird verwendet, um bestehende Gruppen zu ändern. Der **`-n`** Schalter ermöglicht es, den Namen der Gruppe zu ändern. Zum Beispiel:
+  
+     groupmod -n newname oldname
+   
+
+### 3. >>>> groupmod -g
+   - Mit **`groupmod -g`** kann die Gruppen-ID (GID) einer bestehenden Gruppe geändert werden. Zum Beispiel:
+     
+     groupmod -g 10003 clerks
+     
+     Hier wird die GID der Gruppe `clerks` auf `10003` gesetzt.
+
+### 4. >>>> groupdel
+   - Der Befehl **`groupdel`** löscht eine Gruppe. Zum Beispiel:
+
+     groupdel research
+   
+
+### 5. >>>> getent group research
+   - **`getent`** ruft Informationen aus der Systemdatenbank ab. Mit **`group research`** zeigt der Befehl die Details der Gruppe `research` an.
+
+### 6. >>>> grep sales /etc/group
+   - Der **`grep`** Befehl durchsucht die Datei **`/etc/group`** nach der Gruppe `sales`. Dies zeigt alle Zeilen, die den Begriff `sales` enthalten.
+
+### 7. >>>> groupmod -n clerks sales
+   - Dieser Befehl ändert den Namen der Gruppe `sales` in `clerks`.
+
+### 8. >>>> useradd -D 
+   - **`useradd -D`** zeigt die Standardwerte für die Erstellung von Benutzern an, wie z. B. das Standard-Home-Verzeichnis, die Shell und andere Optionen.
+
+### 9. >>>> useradd -D -f 30
+   - **`-f 30`** legt fest, dass ein Benutzer 30 Tage nach Ablauf seines Passworts inaktiv wird. Der Befehl gibt also die Standardwerte an und setzt eine Frist für die Passwortablaufzeit.
+
+### 10. >>>> nano /etc/default/useradd 
+   - Mit **`nano`** öffnest du die Datei **`/etc/default/useradd`** in einem Texteditor. 
+     Diese Datei enthält die Standardwerte, die für neu erstellte Benutzerkonten verwendet werden.
+
+### 11. >>>> useradd -G research -c 'Linux Student' -m student
+   - Der Befehl **`useradd`** erstellt einen neuen Benutzer namens `student`, fügt ihn zur Gruppe `research` hinzu (mit **`-G`**) und setzt den Kommentar **`Linux Student`**. Das **`-m`** sorgt dafür, dass das Home-Verzeichnis für den Benutzer erstellt wird.
+
+### 12. >>>> usermod -aG research sysadmin 
+   - **`usermod -aG`** fügt den Benutzer `sysadmin` der Gruppe `research` hinzu, ohne ihn aus anderen Gruppen zu entfernen (wichtig ist der Schalter `-a`, um die Zugehörigkeit zu anderen Gruppen beizubehalten).
+
+### 13. >>>> getent passwd student 
+   - Dieser Befehl ruft die Benutzerinformationen für den Benutzer `student` aus der Systemdatenbank ab (einschließlich UID, GID, Home-Verzeichnis und Shell).
+
+### 14. >>>> getent shadow student
+   - **`getent shadow`** gibt Informationen aus der **`/etc/shadow`**-Datei zurück, die Passwortinformationen und Ablaufdaten für den Benutzer `student` enthält.
+
+### 15. >>>> passwd student
+   - **`passwd`** wird verwendet, um das Passwort des Benutzers `student` zu ändern. Der Befehl fordert dich auf, ein neues Passwort für den Benutzer festzulegen.
+
+### 16. >>>> last
+   - **`last`** zeigt eine Liste der letzten Anmeldungen und Abmeldungen von Benutzern. Es zeigt Informationen wie den Benutzernamen, das Terminal, die Login-Zeit und die Abmeldezeit.
+
+### 17. >>>> last student
+   - **`last student`** zeigt die Anmeldehistorie des Benutzers `student` an, d. h. wann und von welchem Terminal aus er sich angemeldet hat.
+
+### 18. >>>> usermod -L student
+   - Mit **`usermod -L`** wird das Benutzerkonto `student` gesperrt, sodass er sich nicht mehr anmelden kann. Dies macht das Konto effektiv unbrauchbar, ohne es zu löschen.
+
+### 19. >>>> usermod -U student
+   - Der Befehl **`usermod -U`** hebt die Sperrung des Benutzerkontos auf, sodass der Benutzer `student` sich wieder anmelden kann.
+
+### 20. >>>> userdel -r student
+   - **`userdel -r`** löscht den Benutzer `student` und entfernt auch das Home-Verzeichnis und alle damit verbundenen Dateien. Wenn du den Benutzer ohne das Home-Verzeichnis löschen möchtest, lässt du den `-r` Schalter weg.
