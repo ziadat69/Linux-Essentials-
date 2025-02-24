@@ -1,0 +1,76 @@
+
+### 1. >>> chmod    
+   - Berechtigungen ändern**
+   Der Befehl **`chmod`** wird verwendet, um die Berechtigungen einer Datei oder eines Verzeichnisses zu ändern.
+
+   - ** >>> chmod a+x file
+     Dieser Befehl gibt allen Benutzern (Eigentümer, Gruppe und andere) Ausführungsberechtigungen für die Datei **`file`**.
+     - **a** steht für alle (Eigentümer, Gruppe, andere).
+     - **+x** fügt das Ausführungsrecht hinzu.
+
+   - ** >>> chmod g-w file
+     Entfernt das Schreibrecht für die Gruppe für die Datei **`file`**.
+     - **g** steht für die Gruppe.
+     - **-w** entfernt das Schreibrecht.
+
+   - ** >>> chmod go+r file   
+     Fügt das Leserecht für die Gruppe und andere Benutzer hinzu.
+     - **g** steht für Gruppe.
+     - **o** steht für andere.
+     - **+r** fügt das Leserecht hinzu.
+
+   - ** >>> chmod o=rwx file  
+     Setzt die Berechtigungen für andere Benutzer auf Lese-, Schreib- und Ausführungsberechtigung.
+     - **o** steht für andere.
+     - **=rwx** setzt die Berechtigungen auf alle drei: Lesen, Schreiben und Ausführen.
+
+### 2. 
+   >>> ls
+   - Zeigt die Berechtigungen einer Datei oder eines Verzeichnisses an**
+
+   - >>> ls -ld pub-dir/
+     Zeigt die Berechtigungen und den Eigentümer des Verzeichnisses **`pub-dir`** an.
+
+   - >>> ls -l pub-dir/pub-file  
+     Zeigt die Berechtigungen und den Eigentümer der Datei **`pub-file`** im Verzeichnis **`pub-dir`** an.
+
+   - >>> chmod a=rw pub-dir/pub-file  
+     Setzt die Berechtigungen der Datei **`pub-file`** im Verzeichnis **`pub-dir`** so, dass alle Benutzer (Eigentümer, Gruppe und andere) nur Lese- und Schreibberechtigungen haben (keine Ausführungsberechtigung).
+     
+   - >>> ls -l pub-dir/pub-file  
+     Zeigt die neuen Berechtigungen der Datei nach der Änderung an.
+
+### 3. **Octale Notation für Berechtigungen**
+   Bei der Verwendung der **`chmod`**-Befehls mit Oktalnotation müssen die Oktalwerte der Berechtigungen verstanden werden:
+   - **Lesen (r)** = 4
+   - **Schreiben (w)** = 2
+   - **Ausführen (x)** = 1
+   
+   Die Berechtigungen werden als Kombination dieser Werte dargestellt. Beispiel:
+   - **`chmod 775 test.sh`**
+     - **7** für den Eigentümer (rwx = 4 + 2 + 1 = 7)
+     - **7** für die Gruppe (rwx = 4 + 2 + 1 = 7)
+     - **5** für andere (r-x = 4 + 1 = 5)
+   
+     Dieser Befehl gibt dem Eigentümer und der Gruppe Lese-, Schreib- und Ausführungsberechtigungen, und anderen nur Lese- und Ausführungsberechtigungen.
+
+### 4. >>> stat 
+   - Zeigt detaillierte Informationen über eine Datei**
+
+   - >>> stat test.sh 
+     Dieser Befehl zeigt detaillierte Informationen zur Datei **`test.sh`** an, einschließlich ihrer Berechtigungen, Eigentümer, Größe und Änderungszeit.
+
+### 5. >>> chown 
+
+   - Ändert den Besitzer und die Gruppe einer Datei oder eines Verzeichnisses**
+
+   - ** chown root:root pub-dir **  
+     Ändert den Besitzer und die Gruppe des Verzeichnisses **`pub-dir`** auf `root`.
+
+   - >>> ls -ld pub-dir 
+     Zeigt die Änderungen im Besitz des Verzeichnisses **`pub-dir`** an.
+
+### 6. >>> chgrp - Ändert die Gruppe einer Datei oder eines Verzeichnisses**
+   - **`chgrp -R users priv-dir`**  
+     Ändert rekursiv die Gruppe des Verzeichnisses **`priv-dir`** und aller darin enthaltenen Dateien und Unterverzeichnisse auf **`users`**.
+
