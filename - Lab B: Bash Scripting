@@ -1,0 +1,51 @@
+
+##). 1 Erstellen Sie eine neue Gruppe. Jede Gruppe muss einen einzigartigen Namen haben.
+    Das Skript muss sicherstellen, dass keine doppelten Gruppennamen im System existieren. Wenn ein Duplikat gefunden wird, muss ein Fehler gemeldet werden.
+
+>>>> vim create_group.sh
+
+#!/bin/bash                                                                     
+                                                                                
+echo "gib ein gruppe name"                                                      
+read gruppename                                                                       
+if grep $gruppename  /etc/group > /dev/null                                            
+then                                                                            
+   echo "gruppe is already in System"                                           
+else                                                                            
+    sudo groupadd $gruppename                                                               
+fi                                                                              
+  
+>>>> chmod +x create_group.sh
+
+>>>>  ./create_group.sh
+
+______________________________________________________________________
+##  2)   Erstelle einen neuen Benutzer. Jeder Benutzer muss einen eindeutigen Namen haben. 
+Das Skript muss sicherstellen, dass keine doppelten Benutzernamen im System existieren. Wenn ein Duplikat gefunden wird,
+muss ein Fehler gemeldet werden, und der Administrator muss einen anderen Benutzernamen versuchen. 
+Der Benutzer wird eine Bash-Login-Shell haben und zur Gruppe gehören, die in der vorherigen Schritt erstellt wurde
+
+>>>> vim create_user.sh
+
+#!/bin/bash                                                                     
+while true; do                                                                  
+  echo "gib ein benutzername ein"                                               
+  read benutzername                                                             
+  if id $benutzername > /dev/null                                 
+  then                                                                          
+     echo "benutzername is already in System"                                   
+  else                                                                          
+     sudo useradd -m -s /bin/bash $benutzername                                
+     break                                                                      
+  fi                                                                            
+done       
+
+
+>>>> chmod +x create_user.sh
+
+>>>>  ./create_user.sh
+                                                                     
+                                                                                
+
+____________________________________________________________________
+
