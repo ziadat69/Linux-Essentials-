@@ -20,6 +20,7 @@ fi
 >>>>  ./create_group.sh
 
 ______________________________________________________________________
+
 ##  2)   Erstelle einen neuen Benutzer. Jeder Benutzer muss einen eindeutigen Namen haben. 
 Das Skript muss sicherstellen, dass keine doppelten Benutzernamen im System existieren. Wenn ein Duplikat gefunden wird,
 muss ein Fehler gemeldet werden, und der Administrator muss einen anderen Benutzernamen versuchen. 
@@ -35,7 +36,13 @@ while true; do
   then                                                                          
      echo "benutzername is already in System"                                   
   else                                                                          
-     sudo useradd -m -s /bin/bash $benutzername                                
+     sudo useradd -m -s /bin/bash $benutzername       
+     sudo passwd $benutzername                          ## Erstellen Sie ein Passwort für jeden Benutzer, der erstellt wird. 
+     sudo touch /$benutzername                    ## Erstellen Sie ein Verzeichnis im Root-Verzeichnis (/) des Dateisystems mit dem gleichen Namen wie der erstellte Benutzer
+     sudo chown /$benutzername:/$benutzername /$benutzername    ## Erstellen Sie ein Verzeichnis im Root-Verzeichnis (/) des Dateisystems mit dem gleichen Namen wie der erstellte Benutzer
+     sudo chmod 770 /$benutzername    ## Setzen Sie die Berechtigungen des Verzeichnisses auf vollständige Kontrolle für den Besitzer und vollständige Kontrolle für die erstellte Gruppe. 
+     sudo chmod +t /$benutzername       ## Setzen Sie die Berechtigungen so, dass nur der Besitzer einer Datei diese aus dem Verzeichnis löschen kann
+  
      break                                                                      
   fi                                                                            
 done       
@@ -45,7 +52,3 @@ done
 
 >>>>  ./create_user.sh
                                                                      
-                                                                                
-
-____________________________________________________________________
-
