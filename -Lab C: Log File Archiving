@@ -1,0 +1,43 @@
+1)  Erstelle ein Archiv namens log.tar, das im Verzeichnis archive im Home-Verzeichnis gespeichert wird.
+
+ >  tar -cvf ~/archive/log.tar -C /var/log *.log
+
+1) -c erstellt ein neues Archiv.
+2) -v gibt eine ausführliche Ausgabe (verbose) während des Archivierens aus.
+3) -f gibt den Namen der Archivdatei an.
+4) -C /var/log ändert das Verzeichnis auf /var/log, bevor die Dateien archiviert werden. Dadurch werden die Pfadangaben entfernt und nur die .log Dateien selbst archiviert.
+      *.log wählt alle Dateien mit der Endung .log aus.
+
+
+  
+2)  Zeige den Inhalt des Archivs an, ohne es zu extrahieren.
+
+>  tar -tvf ~/archive/log.tar
+
+1)  -t zeigt den Inhalt des Archivs an.
+2)  -v sorgt für eine ausführliche Ausgabe.
+3)  -f gibt die Archivdatei an.
+
+
+3)  Extrahiere die Dateien in das Verzeichnis ~/backup.
+
+>  tar -xvf ~/archive/log.tar -C ~/backup
+
+ 1)   -x extrahiert die Dateien aus dem Archiv.
+ 2)   -v sorgt für eine ausführliche Ausgabe.
+ 3)   -f gibt die Archivdatei an.
+ 4)   -C ~/backup extrahiert die Dateien in das Verzeichnis ~/backup.
+___________________________________________________________________________________
+
+oder  mit bash skript
+
+#!/bin/bash
+
+                                                # Archiv erstellen mit ausführlicher Ausgabe und Pfadangaben entfernen
+tar -cvf ~/archive/log.tar -C /var/log *.log
+
+                                                # Inhalt des Archivs anzeigen
+tar -tvf ~/archive/log.tar
+
+                                                # Dateien nach ~/backup extrahieren
+tar -xvf ~/archive/log.tar -C ~/backup
