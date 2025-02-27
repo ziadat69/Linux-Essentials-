@@ -1,0 +1,26 @@
+
+1) Extrahiere alle Servicenamen aus der Datei.
+2) Sortiere die Namen alphabetisch und entferne doppelte Einträge.
+3) Entferne alle leeren Zeilen oder Zeilen, die nicht mit einem Buchstaben des Alphabets beginnen.
+4) Speichere die endgültige Ausgabe in einer Datei namens uniqueservices.txt.
+5) Zähle die Zeilen in der Datei mit einem bedingten Befehl, der nur ausgeführt wird, wenn die vorherigen kombinierten Befehle erfolgreich waren.
+
+
+
+>>>>   grep "^[A-Za-z]" services.txt | sort | uniq > uniqueservices.txt
+
+
+
+
+- grep "^[A-Za-z]" services.txt:
+Dieser Befehl sucht nach Zeilen in der Datei services.txt, die mit einem Buchstaben des Alphabets (groß oder klein) beginnen.
+Er ignoriert leere Zeilen und Zeilen, die nicht mit einem Buchstaben beginnen.
+
+- sort:
+Dieser Befehl sortiert die Zeilen alphabetisch.
+
+- uniq:
+Dieser Befehl entfernt doppelte Zeilen, sodass nur einzigartige Servicenamen übrig bleiben.
+
+- uniqueservices.txt:
+Dieser Befehl leitet die endgültige Ausgabe in die Datei uniqueservices.txt um.
